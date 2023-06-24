@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 console.log('app created')
-// const router = express.Router();
+// const router = express.Router();node
 console.log('router created')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

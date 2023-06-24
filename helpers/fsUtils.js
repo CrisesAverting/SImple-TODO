@@ -25,15 +25,15 @@ const readAndAppend = (content, file) => {
         }
     });
 };
-// const readAndRemove = (id, file) => {
-//     fs.readFile(file, 'utf8', (err, data) => {
-//         if (err) {
-//             console.error(err);
-//         } else {
-//             const parData = JSON.parse(data);
-//             parData.
-//         }
-//     });
-// };
+const readAndRemove = (id, file) => {
+    fs.readFile(file, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
+            const parData = JSON.parse(data);
+            parData.splice(id, 1);
+        }
+    });
+};
 
 module.exports = { readFromFile, writeToFile, readAndAppend };
