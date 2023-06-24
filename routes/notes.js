@@ -25,8 +25,9 @@ notes.post('/', (req, res) => {
             status: 'success',
             body: newNote,
         };
+        res.status(201).json(response);
     };
-
+    
 });
 
 module.exports = notes;

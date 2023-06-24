@@ -25,7 +25,7 @@ const readAndAppend = (content, file) => {
         }
     });
 };
-// const readAndRemove = (uuid, file) => {
+// const readAndRemove = (id, file) => {
 //     fs.readFile(file, 'utf8', (err, data) => {
 //         if (err) {
 //             console.error(err);
