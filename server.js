@@ -20,7 +20,7 @@ app.get('/notes', (req, res) => {
 });
 //catch all
 app.get('*', (req, res) => {
-    console.log('hit me one more time')
+    console.log('im the get route')
     res.sendFile(path.join(__dirname, '/public/index.html'))
 });
 

@@ -1,10 +1,18 @@
 const notes = require('express').Router();
 const notesDB = require('../db/db.json');
-const { readAndAppend } = require('../helpers/fsUtils');
+const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
 
-notes.get('/', (req, res) => res.status(200).json(notesDB));
+notes.get('/', (req, res) => res.status(200).json(notesDB)
+// {readFromFile('./db/db.json')
+);
+    
 
+notes.delete('/:id', (req, res) => {
+    const id = res.params.id;
+    // const delNote = 
+    console.log(req.param.id);
+    });
 notes.post('/', (req, res) => {
     const { title, text } = req.body;
 
@@ -19,15 +27,22 @@ notes.post('/', (req, res) => {
             text,
             id: uuidv4(),
         };
-
-        readAndAppend(newNote,'./db/db.json');
+        notesDB.push(newNote);
+        console.log(newNote);
         const response = {
             status: 'success',
             body: newNote,
         };
-        res.status(201).json(response);
+
+        fs.writeFile("./db/db.json", JSON.stringify(notesDB), (err) =>
+            err ? console.error(err) : console.log("New note saved")
+        );
+        //await or add .then
+        //raced condition trying to modify data and pull data at the same
+        res.json(response);
+        // res.status(201).json(response);
     };
-    
+
 });
 
 module.exports = notes;
